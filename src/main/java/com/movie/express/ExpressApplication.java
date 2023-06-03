@@ -32,7 +32,7 @@ public class ExpressApplication {
 		Duration d = Duration.ofHours((long) 3.1);
 		m1.setDateReleased(releaseDate);
 		m1.setDuration(d);
-		movieService.saveMovie(m1);
+		m1 = movieService.saveMovie(m1);
 		
 		
 		// Director1

@@ -29,7 +29,6 @@ public class entityDirector {
 	@Column(name = "ADDRESS")
 	String address;
 	
-	@Id
 	@Column(name = "CONTACT_NUMBER")
 	long contactNumber;
 	

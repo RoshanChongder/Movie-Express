@@ -53,9 +53,7 @@ public class directorServiceImpl implements directorService {
 			if (directorExists) {
 				Optional<entityDirector> d = this.dService.findById(directorId);
 				System.out.println(d.get());
-				d.get().addMovies(m);
-				System.out.println(d.get());
-				this.dService.save(d.get()); // why it is creating a table ?
+				d.get().addMovies(m); // Detached entity passed Error. Has a question here.
 				System.out.println("Movie added for director with id: " + directorId);
 			} else {
 				System.out.println("Director with id " + directorId + " not found to add movies");
