@@ -2,6 +2,8 @@ package com.movie.express.entity;
 
 import java.time.Duration;
 import java.time.LocalDate;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,7 +38,7 @@ public class entityMovie {
 	@Column(name = "DURATION")
 	Duration duration;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "DIRECTOR_ID")
 	entityDirector director;
 

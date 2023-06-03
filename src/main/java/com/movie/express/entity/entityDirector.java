@@ -1,7 +1,7 @@
 package com.movie.express.entity;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 public class entityDirector {
 
 	@Id
-	@Column(name = "DIRECTOR_NAME")
+	@Column(name = "DIRECTOR_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int directorId;
 	
@@ -29,6 +29,7 @@ public class entityDirector {
 	@Column(name = "ADDRESS")
 	String address;
 	
+	@Id
 	@Column(name = "CONTACT_NUMBER")
 	long contactNumber;
 	
@@ -37,6 +38,10 @@ public class entityDirector {
 	
 	@OneToMany(mappedBy = "director", cascade = CascadeType.ALL)
 	List<entityMovie> movies;
+	
+	public entityDirector() {
+		this.movies = new ArrayList<entityMovie>();
+	}
 
 	public int getDirectorId() {
 		return directorId;
@@ -94,6 +99,20 @@ public class entityDirector {
 
 	public void setMovies(List<entityMovie> movies) {
 		this.movies = movies;
+	}
+	
+	public void addMovies(List<entityMovie> movies) {
+		if (movies.size() > 0) {
+			for(entityMovie m: movies) {
+				this.movies.add(m);
+			}
+		}
+	}
+	
+	public void addMovies(entityMovie movie) {
+		if (movie!= null) {
+		 this.movies.add(movie);
+		}
 	}
 
 	@Override
