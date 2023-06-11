@@ -6,5 +6,7 @@ import com.movie.express.entity.entityMovie;
 
 public interface movieService {
 	public entityMovie saveMovie(entityMovie m);
-	public Optional<entityMovie> getMovieById(int id);
+	public entityMovie getMovieById(int id);
+	public void deleteAllRecord();
+	public void deleteMovieById(int movieID);
 }

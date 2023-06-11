@@ -3,6 +3,9 @@ package com.movie.express.entity;
 import java.time.Duration;
 import java.time.LocalDate;
 
+import org.antlr.v4.runtime.misc.NotNull;
+
+import jakarta.annotation.Nullable;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

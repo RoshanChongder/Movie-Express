@@ -29,15 +29,13 @@ public class movieServiceImpl implements movieService {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
+
 	@Override
-	public Optional<entityMovie> getMovieById(int id) {
+	public entityMovie getMovieById(int id) {
 		try {
-			boolean movieExists = this.mService.existsById(id);
-			if (movieExists) {
-				// why here getById or getOne() etc will not work, note that down.
-				// actual exception will come when we will try to access the returned ref.
-				return this.mService.findById(id);
+			Optional<entityMovie> movie = this.mService.findById(id);
+			if (movie.isPresent()) {
+				return movie.get();
 			} else {
 				System.out.println("Movie with id " + id + " does not exists");
 				return null;
@@ -46,6 +44,28 @@ public class movieServiceImpl implements movieService {
 			System.out.println("Error getting movie details: " + e);
 			return null;
 		}
+	}
+
+	@Override
+	public void deleteAllRecord() {
+		try {
+			this.mService.deleteAll();
+		} catch(Exception e) {
+			System.out.println("Error deleting all records for Movies: " + e);
+		}
+		
+	}
+
+
+	@Override
+	public void deleteMovieById(int movieId) {
+		try {
+			this.mService.deleteById(movieId);
+			System.out.println("Movie Deleted Succesfully With Id: " + movieId);
+		} catch(Exception e) {
+			System.out.println("Error while deleting movie with id: " + movieId);
+		}
+		
 	}
 
 }
